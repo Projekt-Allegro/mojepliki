@@ -1,0 +1,41 @@
+ <!DOCTYPE html>
+ <head>
+ 	<title>
+ 		Zapytanie
+ 	</title>
+ 	<meta charset="utf-8">
+ </head>
+ <style>
+ 	body {
+ 		background-image: url(http://stealthsettings.com/wp-content/uploads/2017/05/phpmyadmin.jpg);
+ 		background-repeat: no-repeat;
+ 
+ 	}
+ </style>
+ <body background="http://stealthsettings.com/wp-content/uploads/2017/05/phpmyadmin.jpg">
+ 	<fieldset><legend>Zapytanie Komis</legend>
+ 	<form action = "baza.php" method = "post">
+ 		<!--zapytanie : <input type = "text" name = "z"></br>-->
+ 		<select name="pier">
+ 			<option value="select">SELECT </option>
+             <option value="insert">INSERT INTO </option>
+ 		</select>
+ 		co chcesz wybrać / gdzie chcesz dodać: <input type = "text" name = "1">
+ 
+ 	    <select name="drug">
+ 			<option value="from">FROM </option>
+             <option value="values">VALUES </option>
+ 		</select>
+ 
+         skąd wybierasz / co dodajesz: <input type = "text" name = "2"> 
+ 
+         <select name="trze">
+ 			<option value="where">WHERE </option>
+ 		</select>
+ 
+ 		warunki : <input type = "text" name = "3">
+ 
+ 		<input type = "submit" name = "submit" value = "sprawdź">
+ 	</form></fieldset>
+ </body>
+ </html>
