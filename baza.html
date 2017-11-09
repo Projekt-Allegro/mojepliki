@@ -7,7 +7,7 @@
 </head>
 <style>
 	body {
-		background-image: url(https://scontent-frx5-1.xx.fbcdn.net/v/t1.0-9/23316626_524582747900422_8179301669718552125_n.jpg?oh=bff50717c6b87f136ac5ad5852dae5c5&oe=5A6F09FE);
+		background-image: url(http://stealthsettings.com/wp-content/uploads/2017/05/phpmyadmin.jpg);
 		background-repeat: no-repeat;
 
 	}
@@ -17,23 +17,23 @@
 	<form action = "baza.php" method = "post">
 		<!--zapytanie : <input type = "text" name = "z"></br>-->
 		<select name="pier">
-			<option value="select">SELECT </option>
-            <option value="insert">INSERT INTO </option>
-		</select>
-		co chcesz wybrać / gdzie chcesz dodać: <input type = "text" name = "1">
+			<option value="select">Znajdź</option>
+            <option value="insert">Wprowadź</option>
+		</select></br>
+		Czego szukasz:<input type = "text" name = "1"></br>
 
 	    <select name="drug">
 			<option value="from">FROM </option>
             <option value="values">VALUES </option>
-		</select>
+		</select></br>
 
-        skąd wybierasz / co dodajesz: <input type = "text" name = "2"> 
+        skąd wybierasz / co dodajesz: <input type = "text" name = "2"></br> 
 
         <select name="trze">
-			<option value="where">WHERE </option>
-		</select>
+			<option value="where">Gdzie</option>
+		</select></br>
 
-		warunki : <input type = "text" name = "3">
+		szczegóły: <input type = "text" name = "3"></br>
 
 		<input type = "submit" name = "submit" value = "sprawdź">
 	</form></fieldset>
