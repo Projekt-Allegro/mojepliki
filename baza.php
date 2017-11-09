@@ -1,4 +1,4 @@
-<?php
+<?php header('Content-Type: text/html;charset=UTF-8');
 $p = $_POST["pier"];
 $x = $_POST["1"];
 $v = $_POST["drug"];
@@ -6,22 +6,35 @@ $e = $_POST["2"];
 $r = $_POST["trze"];
 $t = $_POST["3"];
 $pos = strpos($p, "select");
-if ($pos === false){
+if ($t === ""){
 ob_start();
-echo $p, $x, $v, $e;
+echo $p,' ', $x,' ', $v,' ', $e;
 $all = ob_get_contents();
 ob_end_clean();
 } else {
-ob_start();
-echo $p,' ', $x,' ', $v,' ', $e,' ', $r, ' ', $t;
+	ob_start();
+echo $p,' ', $x,' ', $v, ' ', $e,' ', $r,' ', $t;
 $all = ob_get_contents();
 ob_end_clean();
-}
+};
+
+
+
+
+
+
+
+/*$pos = strpos($p, "select");
+	ob_start();
+echo $p, $x, $v, $e, $r, $t;
+$all = ob_get_contents();
+ob_end_clean();
+*/
 
 if ($pos === false){
 	$a = mysqli_connect('localhost', 'root', '');
-    $b = mysqli_select_db($a ,'komis');
-    $h = mysqli_query($a, 'select * from auto');
+    $b = mysqli_select_db($a ,'alegro');
+    $h = mysqli_query($a, 'select * from produkty');
     $c = mysqli_query($a, $all);
     $d = mysqli_num_rows($h);
 
@@ -32,10 +45,10 @@ if ($pos === false){
 	echo ' ', $key;
 }
 }
-} else {
+}else {
 
 	$a = mysqli_connect('localhost', 'root', '');
-    $b = mysqli_select_db($a ,'komis');
+    $b = mysqli_select_db($a ,'alegro');
     $c = mysqli_query($a, $all);
     $d = mysqli_num_rows($c);
 
@@ -45,6 +58,8 @@ if ($pos === false){
 	foreach ($g as $key) {
 	echo ' ', $key;
 }
-}
-}
+};
+
+
+
 ?>
