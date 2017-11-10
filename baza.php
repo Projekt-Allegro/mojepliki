@@ -1,65 +1,50 @@
 <?php header('Content-Type: text/html;charset=UTF-8');
-$p = $_POST["pier"];
-$x = $_POST["1"];
-$v = $_POST["drug"];
-$e = $_POST["2"];
-$r = $_POST["trze"];
-$t = $_POST["3"];
-$pos = strpos($p, "select");
-if ($t === ""){
+$tryb = $_POST["pier"];
+$trwartosc = $_POST["1"];
+$skad = $_POST["drug"];
+$skwartosc = $_POST["2"];
+$gdzie = $_POST["trze"];
+$gdwartosc = $_POST["3"];
+$pos = strpos($tryb, "select");
+if ($gdwartosc === ""){
 ob_start();
-echo $p,' ', $x,' ', $v,' ', $e;
+echo $tryb,' ', $trwartosc,' ', $skad,' ', $skwartosc;
 $all = ob_get_contents();
 ob_end_clean();
 } else {
 	ob_start();
-echo $p,' ', $x,' ', $v, ' ', $e,' ', $r,' ', $t;
+echo $tryb,' ', $trwartosc,' ', $skad, ' ', $skwartosc,' ', $gdzie,' ', $gdwartosc;
 $all = ob_get_contents();
 ob_end_clean();
 };
 
-
-
-
-
-
-
-/*$pos = strpos($p, "select");
-	ob_start();
-echo $p, $x, $v, $e, $r, $t;
-$all = ob_get_contents();
-ob_end_clean();
-*/
-
 if ($pos === false){
-	$a = mysqli_connect('localhost', 'root', '');
-    $b = mysqli_select_db($a ,'alegro');
-    $h = mysqli_query($a, 'select * from produkty');
-    $c = mysqli_query($a, $all);
-    $d = mysqli_num_rows($h);
+	$conn = mysqli_connect('localhost', 'root', '');
+    $datab = mysqli_select_db($conn ,'alegro');
+    $query1 = mysqli_query($conn, 'select * from produkty');
+    $query2 = mysqli_query($conn, $all);
+    $times = mysqli_num_rows($query1);
 
-        for ($i=0; $i < $d; $i++) { 
-	$g = mysqli_fetch_row($h);
+        for ($i=0; $i < $times; $i++) { 
+	$forrow = mysqli_fetch_row($query1);
 	echo '</br>';
-	foreach ($g as $key) {
+	foreach ($forrow as $key) {
 	echo ' ', $key;
 }
 }
 }else {
 
-	$a = mysqli_connect('localhost', 'root', '');
-    $b = mysqli_select_db($a ,'alegro');
-    $c = mysqli_query($a, $all);
-    $d = mysqli_num_rows($c);
+	$conn = mysqli_connect('localhost', 'root', '');
+    $datab = mysqli_select_db($conn ,'alegro');
+    $query2 = mysqli_query($conn, $all);
+    $times = mysqli_num_rows($query2);
 
-    for ($i=0; $i < $d; $i++) { 
-	$g = mysqli_fetch_row($c);
+        for ($i=0; $i < $times; $i++) { 
+	$forrow = mysqli_fetch_row($query2);
 	echo '</br>';
-	foreach ($g as $key) {
+	foreach ($forrow as $key) {
 	echo ' ', $key;
 }
+}
 };
-
-
-
 ?>
