@@ -1,38 +1,33 @@
 <?php header('Content-Type: text/html;charset=UTF-8');
-$tryb = $_POST["pier"];
-$trwartosc = $_POST["1"];
-$skad = $_POST["drug"];
-$skwartosc = $_POST["2"];
-$gdzie = $_POST["trze"];
-$gdwartosc = $_POST["3"];
-$pos = strpos($tryb, "select");
-if ($gdwartosc === ""){
+$select = "select *";
+$skad = "from produkty where";
+$kategoria = $_POST["kat"];
+$cena = $_POST["cena"];
+$cena1 = $_POST["cena1"];
+$co = $_POST["1"];
+if ($co === ""){
 ob_start();
-echo $tryb,' ', $trwartosc,' ', $skad,' ', $skwartosc;
+echo $select,' ', $skad,' ', 'kategoria like ', $kategoria, ' and',' cena ', $cena,' ', $cena1, ' and nazwa like' ,$co;
 $all = ob_get_contents();
 ob_end_clean();
-} else {
+}elseif ($kategoria === "" && $co === "") {
+ob_start();
+echo $select,' ', $skad,' ', $cena,' ', $cena1;
+$all = ob_get_contents();
+ob_end_clean();
+}elseif ($kategoria === "") {
 	ob_start();
-echo $tryb,' ', $trwartosc,' ', $skad, ' ', $skwartosc,' ', $gdzie,' ', $gdwartosc;
+echo $select,' ', $skad,' cena ', $cena,' ', $cena1, ' and ', 'nazwa like ',$co;
+$all = ob_get_contents();
+ob_end_clean();
+}
+else{
+	ob_start();
+ echo $select,' ', $skad, ' ','kategoria like ', $kategoria, ' and cena ',$cena, ' ', $cena1,' and ', 'nazwa like ', $co;
 $all = ob_get_contents();
 ob_end_clean();
 };
-
-if ($pos === false){
-	$conn = mysqli_connect('localhost', 'root', '');
-    $datab = mysqli_select_db($conn ,'alegro');
-    $query1 = mysqli_query($conn, 'select * from produkty');
-    $query2 = mysqli_query($conn, $all);
-    $times = mysqli_num_rows($query1);
-
-        for ($i=0; $i < $times; $i++) { 
-	$forrow = mysqli_fetch_row($query1);
-	echo '</br>';
-	foreach ($forrow as $key) {
-	echo ' ', $key;
-}
-}
-}else {
+echo $all;
 
 	$conn = mysqli_connect('localhost', 'root', '');
     $datab = mysqli_select_db($conn ,'alegro');
@@ -46,5 +41,5 @@ if ($pos === false){
 	echo ' ', $key;
 }
 }
-};
+
 ?>
