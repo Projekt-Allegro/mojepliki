@@ -27,7 +27,6 @@ else{
 $all = ob_get_contents();
 ob_end_clean();
 };
-echo $all;
 
 	$conn = mysqli_connect('localhost', 'root', '');
     $datab = mysqli_select_db($conn ,'alegro');
