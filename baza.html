@@ -14,27 +14,24 @@
 </style>
 <body background="http://stealthsettings.com/wp-content/uploads/2017/05/phpmyadmin.jpg">
 	<fieldset><legend>Zapytanie Komis</legend>
-	<form action = "baza.php" method = "post">
+	<form action = "probne.php" method = "post">
 		<!--zapytanie : <input type = "text" name = "z"></br>-->
-		<select name="pier">
-			<option value="select">Znajdź</option>
-            <option value="insert">Wprowadź</option>
-		</select></br>
-		Czego szukasz:<input type = "text" name = "1"></br>
+		Czego szukasz?:<input type = "text" name = "1"></br>
 
-	    <select name="drug">
-			<option value="from">FROM </option>
-            <option value="values">VALUES </option>
-		</select></br>
+        Kategoria:<select name="kat">
+  <option value="">brak</option>
+  <option value="budowa">Budowa</option>
+  <option value="muzyka">Muzyka</option>
+  <option value="zabawki">Zabawki</option>
+  <option value="kuchnia">Kuchnia</option>
+</select></br>
 
-        skąd wybierasz / co dodajesz: <input type = "text" name = "2"></br> 
-
-        <select name="trze">
-			<option value="where">Gdzie</option>
-		</select></br>
-
-		szczegóły: <input type = "text" name = "3"></br>
-
+		Cena: <select name="cena">
+  <option value="<">mniejsza od</option>
+  <option value=">">większa od</option>
+</select></br>
+        Wartość:<input type = "text" name = "cena1"></br>
+        
 		<input type = "submit" name = "submit" value = "sprawdź">
 	</form></fieldset>
 </body>
