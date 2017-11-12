@@ -20,6 +20,11 @@ ob_end_clean();
 echo $select,' ', $skad,' cena ', $cena,' ', $cena1, ' and ', 'nazwa like ',$co;
 $all = ob_get_contents();
 ob_end_clean();
+}elseif ($cena1 === ""){
+ob_start();
+ echo $select,' ', $skad, ' ','kategoria like ',$kategoria ,' and ', 'nazwa like ', $co;
+$all = ob_get_contents();
+ob_end_clean();
 }
 else{
 	ob_start();
