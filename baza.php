@@ -7,7 +7,7 @@ $cena1 = $_POST["cena1"];
 $co = $_POST["1"];
 if ($co === ""){
 ob_start();
-echo $select,' ', $skad,' ', 'kategoria like ', $kategoria, ' and',' cena ', $cena,' ', $cena1, ' and nazwa like' ,$co;
+echo $select,' ', $skad,' ', 'kategoria like ', $kategoria, ' and',' cena ', $cena,' ', $cena1;
 $all = ob_get_contents();
 ob_end_clean();
 }elseif ($kategoria === "" && $co === "") {
@@ -23,10 +23,11 @@ ob_end_clean();
 }
 else{
 	ob_start();
- echo $select,' ', $skad, ' ','kategoria like ', $kategoria, ' and cena ',$cena, ' ', $cena1,' and ', 'nazwa like ', $co;
+ echo $select,' ', $skad, ' ','kategoria like ',$kategoria , ' and cena ',$cena, ' ', $cena1,' and ', 'nazwa like ', $co;
 $all = ob_get_contents();
 ob_end_clean();
 };
+echo $all;
 
 	$conn = mysqli_connect('localhost', 'root', '');
     $datab = mysqli_select_db($conn ,'alegro');
