@@ -11,55 +11,60 @@ $cena = $_POST["cena"];
 $przebieg = $_POST["przebieg"];
 $co = $_POST["1"];
 
-$co = "'".mysqli_real_escape_string($conn, stripslashes($co))."'"; // dodaje automatycznie quoty do nazwy
+$co = "'".mysqli_real_escape_string($conn, stripslashes($co))."'"; 	// dodaje automatycznie quoty do nazwy
 $array = array($co);
 $values = implode(", ", $array);
 
-if ($kolor === "" && $co === "" && $przebieg === "") { // zasady działania dla pustych pól
-ob_start(); // zapisuje echo do stringa
+if ($kolor === "" && $co === "" && $przebieg === "") { 		// zasady działania dla pustych pól
+ob_start(); 												// zapisuje echo do stringa
 echo $select,' ', $skad;
 $all = ob_get_contents();
 ob_end_clean();
+
 }elseif ($kolor === "" && $co === "") {
 ob_start();
 echo $select,' ', $skad, $gdzie,' ', $cena;
 $all = ob_get_contents();
 ob_end_clean();
+
 }elseif ($co === "" && $przebieg === ""){
 ob_start();
 echo $select,' ', $skad,$gdzie,' ', 'kolor like ', $kolor;
 $all = ob_get_contents();
 ob_end_clean();
+
 }elseif ($kolor === "" && $przebieg === "") {
 ob_start();
 echo $select,' ', $skad, $gdzie,' ','marka like ',"$co";
 $all = ob_get_contents();
 ob_end_clean();
+
 }elseif ($co === ""){
 ob_start();
 echo $select,' ', $skad,$gdzie,' ', 'kolor like ', $kolor, ' and ', $cena;
 $all = ob_get_contents();
 ob_end_clean();
+
 }elseif ($kolor === "") {
 	ob_start();
 echo $select,' ', $skad,$gdzie,$cena,' and ', $przebieg, ' and ', 'marka like ',"$co";
 $all = ob_get_contents();
 ob_end_clean();
+
 }elseif ($przebieg === ""){
 ob_start();
  echo $select,' ', $skad,$gdzie, ' ','kolor like ',$kolor ,' and ', 'marka like ', "$co";
 $all = ob_get_contents();
 ob_end_clean();
+
 }
 else{
 	ob_start();
- echo $select,' ', $skad,$gdzie, ' ','kolor like ',$kolor , ' and ',$cena,' and ', 'marka like ', "$co", ' and ',$cena;
+ echo $select,' ', $skad,$gdzie, ' ','kolor like ',$kolor , ' and ',$cena,' and ', 'marka like ', "$co", ' and ',$cena,' and ', $przebieg;
 $all = ob_get_contents();
 ob_end_clean();
 };
 //echo $all;
-
-
 
 	
     $query2 = mysqli_query($conn, $all); // zapytanie
@@ -70,7 +75,6 @@ ob_end_clean();
 	echo '</br>';
 	foreach ($forrow as $key) {
 	echo ' ', $key;
+	}
 }
-}
-
 ?>
